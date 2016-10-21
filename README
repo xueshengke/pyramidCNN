@@ -1,0 +1,17 @@
+This project is an attempt to ultilize the layer-wise training procedure, i.e. pyramid, to learn a convolutional neural network. However, the performances on accuracy and time are not desirable on different image datasets. Therefore, this project is deprecated for now.
+
+Our proposal of this idea originates from this paper:
+
+@article{
+王冠皓徐军-39,
+   Author = {王冠皓 and 徐军},
+   Title = {基于多级金字塔卷积神经网络的快速特征表示方法},
+   Journal = {计算机应用研究},
+   Number = {08},
+   Pages = {2492-2495},
+   Note = {页数: 4},
+   Abstract = {由于在大尺度图像中卷积滤波的过程速度过慢,导致卷积神经网络(convolutional neural network,CNN)参数调节困难、训练时间过长。针对这一问题,通过对传统卷积神经网络(traditional convolution neural network,TCNN)的改进,提出一种快速有效的多级金字塔卷积神经网络(multi-level pyramid CNN,MLPCNN)。这一网络使用权值共享的方法将低级的滤波权值共享到高级,保证CNN的训练只在较小尺寸的图像块上进行,加快了训练速度。实验表明,在特征维数比较低的情况下,MLPCNN提取到的特征比传统的特征提取方法更加有效,在...},
+   Keywords = {深度学习;多级金字塔卷积神经网络;特征表示;特征共享},
+   Year = {2015} }
+
+Perhaps it is not completely believable.
