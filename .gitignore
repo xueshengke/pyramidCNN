@@ -1,6 +1,7 @@
 # ignore files except *.fig or *.m
 !\*.fig
 \*.m
+
 *.m~
 
 *.mat
