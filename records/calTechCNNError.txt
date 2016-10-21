@@ -1,0 +1,23 @@
+# calTech101 data set for CNN
+    train data 200 * 200 * 1500
+    train label 10 * 1500
+    test data  200 * 200 * 1500
+    test label  10 * 1500
+
+# first test
+ 
+cnn.layers = {
+    struct('type', 'i') 
+    struct('type', 'c', 'outputmaps', 6,  'kernelsize', 5)
+    struct('type', 's', 'scale', 2)
+    struct('type', 'c', 'outputmaps', 12,  'kernelsize', 3)
+    struct('type', 's', 'scale', 2)
+    struct('type', 'c', 'outputmaps', 10,  'kernelsize', 5)
+    struct('type', 's', 'scale', 2)
+    struct('type', 'c', 'outputmaps', 8,  'kernelsize', 5)
+    struct('type', 's', 'scale', 2)
+};
+    
+    epoch = 100, time = 15566.14 seconds
+    accuracy 67.73 %
+---------------------------------------------------------------------------

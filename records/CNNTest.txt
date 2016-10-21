@@ -1,0 +1,43 @@
+# CNN test for mnist data
+CNN layers =
+    input layer       : inputmap = 1
+    convolution layer : outputmaps = 6, kernelsize = 5   
+    subsampling layer : scale = 2   
+    convolution layer : outputmaps = 12, kernelsize = 5
+    subsampling layer : scale = 2
+
+cnn.layers{2,1}.k  1*1 cell 1*6 cell 5*5 double
+cnn.layers{2,1}.b  1*6 cell
+
+cnn.layers{4,1}.k  1*6 cell 1*12 cell 5*5 double
+cnn.layers{4,1}.b  1*12 cell
+
+cnn.ffW     10*192 = 10*4*4*12
+cnn.ffb     10*1
+
+# pre training sparse auto encoder
+layer 1: train patches N*5*5 / 28*28*maps
+         weights: 6*5*5, inputSize=25, hiddenSize=6
+
+layer 2: train patches N*5*5 / 12*12*maps
+         weights: 12*5*5, inputSize= 25, hiddenSize=12
+
+full connected layer:
+         train patches N*4*4*12 
+         weights: 10*192, inputSize=192, hiddenSize=10
+
+---------------------------------------------------------------------------
+Case 1: Numepochs = 20, time = 2889.97 seconds, accuracy = 98.02 %
+
+Case 2: Numepochs = 50, time = 7066.68 seconds, accuracy = 98.51 %
+
+---------------------------------------------------------------------------
+# CNN test for mnist data with sparse auto encoder pre-training
+
+Case 1: Numepochs = 50, time = 403.61 + 67.16 + 65.55 + 61.81 + 64.94 
+    + 66.93 + 61.27 + 35.54 + 7270.27 seconds, accuracy = 98.56 %
+
+Case 2: Numepochs = 20, time = 405.35 + 67.19 + 64.89 + 63.26 + 64.83 
+    + 67.38 + 62.01 + 35.10 + 2912.24 seconds, accuracy = 97.98 %
+---------------------------------------------------------------------------
+

@@ -1,0 +1,49 @@
+# CNN for mnist data
+CNN layers =
+    input layer       : inputmap = 1
+    convolution layer : outputmaps = 6, kernelsize = 5   
+    subsampling layer : scale = 2   
+    convolution layer : outputmaps = 12, kernelsize = 5
+    subsampling layer : scale = 2
+
+cnn.layers{2,1}.k  1*1 cell 1*6 cell 5*5 double
+cnn.layers{2,1}.b  1*6 cell
+
+cnn.layers{4,1}.k  1*6 cell 1*12 cell 5*5 double
+cnn.layers{4,1}.b  1*12 cell
+
+cnn.ffW     10*192 = 10*4*4*12
+cnn.ffb     10*1
+
+input train data :      28*28*60000
+first layer output :    12*12*60000*6
+second layer output :   4*4*60000*12
+
+first pyramid train batches :   12*12*(16*60000)
+second pyramid train batches :  28*28*60000 
+
+# Test 1
+Train first pyramid layer: 
+    numepochs = 10, time = 1306.40 seconds
+Train second pyramid layer:
+    numepochs = 10, time = 936.89 seconds
+test pyramid cnn before tune:
+    accuracy = 93.33 %
+tune pyramid cnn (optional):
+    numepochs = 5, time = 573.44 seconds
+test pyramid cnn after tune:
+    accuracy = 97.28 %
+
+# Test 2
+Train first pyramid layer: 
+    numepochs = 25, time = 3322.48 seconds
+Train second pyramid layer:
+    numepochs = 25, time = 2362.54 seconds
+test pyramid cnn before tune:
+    accuracy = 91.50 %
+tune pyramid cnn (optional):
+    numepochs = 5, time = 572.21 seconds
+test pyramid cnn after tune:
+    accuracy = 97.29 %
+---------------------------------------------------------------------------
+
